@@ -1,3 +1,4 @@
+import Step1 from "./components/Step1";
 import Playground from "./components/play";
 import React from "react";
 import ReactDOM from "react-dom";
