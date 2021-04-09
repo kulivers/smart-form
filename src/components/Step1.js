@@ -6,6 +6,7 @@ import Input from "./Input";
 import Button from "./Button";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
+import { useData } from "../DataContext";
 
 const validationStep1 = yup.object().shape({
   firstName: yup
@@ -24,14 +25,18 @@ const validationStep1 = yup.object().shape({
 
 const Step1 = () => {
   const history = useHistory();
+  const { setValues, data } = useData();
+
   return (
     <StepsContainer>
       <Typography variant="h5">Step 1</Typography>
       <Formik
-        initialValues={{ firstName: "sadad", lastName: "asdasdsa" }}
+        initialValues={{ firstName: data.firstName, lastName: data.lastName }}
         validationSchema={validationStep1}
+
         onSubmit={(values) => {
           history.push("./step2");
+          setValues(values);
         }}
       >
         {({

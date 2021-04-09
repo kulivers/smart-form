@@ -8,24 +8,25 @@ import Button from "./Button";
 import { useHistory } from "react-router-dom";
 import Input from "./Input";
 import * as yup from "yup";
-
+import { useData } from "../DataContext";
 const validateEmail = yup.object().shape({ email: yup.string().email() });
 
 const Step2 = () => {
   const history = useHistory();
-
+  const { setValues, data } = useData();
   return (
     <StepsContainer>
       <Typography variant="h5">Step 2</Typography>
       <Formik
         initialValues={{
-          email: "",
-          hasTelephoneNumber: false,
-          telephoneNumber: "",
+          email: data.email,
+          hasTelephoneNumber: data.hasTelephoneNumber,
+          telephoneNumber: data.telephoneNumber,
         }}
         validationSchema={validateEmail}
         onSubmit={(values) => {
           history.push("./step3");
+          setValues(values);
         }}
       >
         {({
@@ -38,13 +39,13 @@ const Step2 = () => {
           setFieldValue,
           ...props
         }) => {
-          // console.log("Step2 values: ", values);
+          console.log("Step2 values: ", values);
 
           return (
             <Form
               onSubmit={handleSubmit}
               onChange={() => {
-                console.log(values);
+                setValues(values);
               }}
             >
               <Input
@@ -62,10 +63,11 @@ const Step2 = () => {
                 </div>
               ) : null}
               <Checkbox
+                name="hasTelephoneNumber"
                 onChange={handleChange}
                 setFormikValue={setFieldValue}
                 hasTelephoneNumber={values.hasTelephoneNumber}
-              ></Checkbox>
+              />
               {values.hasTelephoneNumber && (
                 <Telephone
                   onChange={handleChange}

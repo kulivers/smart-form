@@ -4,7 +4,6 @@ import "./App.css";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Header from "./Header";
-
 const App = () => {
   return (
     <div className="App">

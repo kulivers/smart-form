@@ -7,8 +7,8 @@ const useStyles = makeStyles({ cb: { alignSelf: "center" } });
 export default (props) => {
   const styles = useStyles();
 
-  const onValueChange = (hasTelephoneNumber) => {
-    props.setFormikValue("hasTelephoneNumber", !props.hasTelephoneNumber);
+  const onValueChange = () => {
+    props.setFormikValue([props.name], !props.hasTelephoneNumber);
   };
 
   return (
