@@ -12,6 +12,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Form = ({ children, ...props }) => {
   const styles = useStyles();
-  return <form className={styles.form}>{children}</form>;
+  return <form className={styles.form} {...props}>{children}</form>;
 };
 export default Form;

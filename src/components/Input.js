@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
 const Input = ({ children, ...props }) => {
   const styles = useStyles();
   return (
-    <TextField className={styles.input} {...props} fullWidth noValidate>
+    <TextField className={styles.input} {...props} fullWidth noValidate={true}>
       {children}
     </TextField>
   );

@@ -1,5 +1,6 @@
-import Step1 from "./components/Step1";
+import Step2 from "./components/Step2";
 import Playground from "./components/play";
+import Telephone from "./components/Telephone";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";

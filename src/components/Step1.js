@@ -5,6 +5,7 @@ import Form from "./Form";
 import Input from "./Input";
 import Button from "./Button";
 import * as yup from "yup";
+import { useHistory } from "react-router-dom";
 
 const validationStep1 = yup.object().shape({
   firstName: yup
@@ -22,6 +23,7 @@ const validationStep1 = yup.object().shape({
 });
 
 const Step1 = () => {
+  const history = useHistory();
   return (
     <StepsContainer>
       <Typography variant="h5">Step 1</Typography>
@@ -29,7 +31,7 @@ const Step1 = () => {
         initialValues={{ firstName: "sadad", lastName: "asdasdsa" }}
         validationSchema={validationStep1}
         onSubmit={(values) => {
-            console.log(values);
+          history.push("./step2");
         }}
       >
         {({
@@ -71,7 +73,9 @@ const Step1 = () => {
                   {errors.lastName}
                 </div>
               ) : null}
+              {/*<Link to="/step2">*/}
               <Button>Next</Button>
+              {/*</Link>*/}
             </Form>
           );
         }}
