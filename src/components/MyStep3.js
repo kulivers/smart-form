@@ -17,7 +17,7 @@ const UploadComponent = (props) => {
     },
   });
   const dz = useDropzone();
-  console.log(dz);
+  // console.log(dz);
   return (
     <div>
       {}

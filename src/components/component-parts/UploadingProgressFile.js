@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 
 const UploadingProgressFile = (props) => {
   const [progress, setProgress] = useState(0);
@@ -8,11 +9,12 @@ const UploadingProgressFile = (props) => {
     async function upload() {
       const url = await uploadFile(props.file, setProgress);
       // this.setState({ url: url });
-      console.log(url);
+      // console.log(url);
+      props.onUpload(props.file, url);
     }
     upload();
   }, []);
-
+  const useStyles = makeStyles({});
   return (
     <div
       style={{
@@ -33,7 +35,16 @@ const UploadingProgressFile = (props) => {
         }}
       >
         {props.file.name}
-        <Button variant="contained" size="small">
+        <Button
+          variant="contained"
+          size="small"
+          onClick={() => {
+            //props.file is avalible
+            //props.onDelete is avalible
+            props.onDelete(props.file);
+            // console.log(props.onDelete);
+          }}
+        >
           Delete
         </Button>
       </div>
