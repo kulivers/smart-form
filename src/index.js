@@ -1,6 +1,9 @@
-import Step2 from "./components/Step2";
-import Playground from "./components/play";
-import Telephone from "./components/Telephone";
+import CloudinaryFileUploader from "./just playground/CloudinaryPlayground";
+import Step3 from "./components/Step3";
+import MyStep3 from "./components/MyStep3";
+import Playground from "./just playground/CssDisplayPlayground";
+import Telephone from "./components/component-parts/Telephone";
+///////////////////////////////DELETE UPPER////////////////////////////////////
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";

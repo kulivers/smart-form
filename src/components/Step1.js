@@ -1,9 +1,10 @@
-import StepsContainer from "./StepsContainer";
+import React from "react";
+import StepsContainer from "./component-parts/StepsContainer";
 import { Formik } from "formik";
 import { Typography } from "@material-ui/core";
-import Form from "./Form";
-import Input from "./Input";
-import Button from "./Button";
+import Form from "./component-parts/Form";
+import Input from "./component-parts/Input";
+import Button from "./component-parts/Button";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 import { useData } from "../DataContext";
@@ -24,16 +25,16 @@ const validationStep1 = yup.object().shape({
 });
 
 const Step1 = () => {
-  const history = useHistory();
+  const history = useHistory(); //its avalible from props
   const { setValues, data } = useData();
-
+  // console.log(props);
   return (
-    <StepsContainer>
+    <React.Fragment>
+      {/*<StepsContainer>*/}
       <Typography variant="h5">Step 1</Typography>
       <Formik
         initialValues={{ firstName: data.firstName, lastName: data.lastName }}
         validationSchema={validationStep1}
-
         onSubmit={(values) => {
           history.push("./step2");
           setValues(values);
@@ -85,7 +86,8 @@ const Step1 = () => {
           );
         }}
       </Formik>
-    </StepsContainer>
+      {/*</StepsContainer>*/}
+    </React.Fragment>
   );
 };
 

@@ -1,21 +1,25 @@
-import StepsContainer from "./StepsContainer";
+import React from "react";
+
+import StepsContainer from "./component-parts/StepsContainer";
 import { Formik } from "formik";
 import { Typography } from "@material-ui/core";
-import Checkbox from "./Checkbox";
-import Form from "./Form";
-import Telephone from "./Telephone";
-import Button from "./Button";
+import Checkbox from "./component-parts/Checkbox";
+import Form from "./component-parts/Form";
+import Telephone from "./component-parts/Telephone";
+import Button from "./component-parts/Button";
 import { useHistory } from "react-router-dom";
-import Input from "./Input";
+import Input from "./component-parts/Input";
 import * as yup from "yup";
 import { useData } from "../DataContext";
+
 const validateEmail = yup.object().shape({ email: yup.string().email() });
 
 const Step2 = () => {
   const history = useHistory();
   const { setValues, data } = useData();
   return (
-    <StepsContainer>
+    <React.Fragment>
+      {/*<StepsContainer>*/}
       <Typography variant="h5">Step 2</Typography>
       <Formik
         initialValues={{
@@ -39,8 +43,6 @@ const Step2 = () => {
           setFieldValue,
           ...props
         }) => {
-          console.log("Step2 values: ", values);
-
           return (
             <Form
               onSubmit={handleSubmit}
@@ -79,7 +81,8 @@ const Step2 = () => {
           );
         }}
       </Formik>
-    </StepsContainer>
+      {/*</StepsContainer>*/}
+    </React.Fragment>
   );
 };
 
